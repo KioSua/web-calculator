@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Calculator</title>
+     <link rel="stylesheet" href="./style.css">
+     <link rel="shortcut icon" href="./icon.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="container">
+        <div class="result">
+            <input type="text" id="result" placeholder="0">
+        </div>
+
+        <div class="specialChar">
+            <button class="upBtn" onclick="result.value=''">AC</button>
+            <button class="upBtn" onclick="result.value = result.value.slice(0,-1)">CI</button>
+            <button class="upBtn" onclick="result.value+='/'">/</button>
+            <button class="upBtn" onclick="result.value+='+'">+</button>
+        </div>
+        <div class="centerUpNum">
+            <button class="centerUpBtn" onclick="result.value+='7'">7</button>
+            <button class="centerUpBtn" onclick="result.value+='8'">8</button>
+            <button class="centerUpBtn" onclick="result.value+='9'">9</button>
+            <button class="upBtn" onclick="result.value+='-'">-</button>
+        </div>
+        <div class="centerNum">
+            <button class="num456" onclick="result.value+='4'" >4</button>
+            <button class="num456" onclick="result.value+='5'" >5</button>
+            <button class="num456" onclick="result.value+='6'" >6</button>
+            <button class="upBtn" onclick="result.value+='*'">*</button>
+        </div>
+        <div class="downNum">
+            <button class="num123" onclick="result.value+='1'" >1</button>
+            <button class="num123" onclick="result.value+='2'" >2</button>
+            <button class="num123" onclick="result.value+='3'" >3</button>
+            <button class="upBtn" onclick="result.value+='%'">%</button>
+        </div>
+        <div class="specialCharDown">
+            <button class="specCharD" onclick="result.value+='0'" >0</button>
+            <button class="specCharD" onclick="result.value+=','" >,</button>
+            <button class="upBtn" onclick="result.value+='()'">()</button>
+            <button class="upBtn" id="solve" onclick="result.value = eval(result.value)">=</button>
+        </div>
+        <div class="specialNumber">
+            <button class="specN" onclick="result.value+='3,1415926535'">pi</button>
+            <button class="specN"onclick="result.value+='2,718281828459'">e</button>
+        </div>
+
+
+
+
+
+
+
+
+        <script>
+            const result = document.getElementById('result')
+            if(result.value = 'undefined'){
+                    result.value = ''
+            }
+
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter'){
+                    try {
+                        result.value = eval(result.value); // Використовуємо eval для обчислення
+                            } catch (e) {
+                                result.value = 'Error'; // Якщо вираз неправильний, вивести помилку
+                                    }
+                                  }
+                else if(event.key === '='){
+                    
+                    try{
+                        result.value = eval(result.value);
+                    }
+                    catch(e){
+                        result.value = 'Error';
+                    }
+                    }
+                    result.value.slice(0,-1);
+                }
+            
+            )
+
+
+            result.addEventListener('input', function() {
+        // Дозволяємо тільки цифри, оператори +, -, *, /, (, ), ., і %
+                result.value = result.value.replace(/[^0-9+\-*/().%]/g, '');
+            });
+
+                
+
+        
+        
+        </script>
+    </div>
+</body>
+</html>
